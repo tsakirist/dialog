@@ -3,17 +3,17 @@ const app = express();
 const path = require('path');
 
 app.set('view engine', 'pug');
-app.set('views', path.resolve(__dirname + '/../client'));
+app.set('views', path.resolve(__dirname + '/../client/views/'));
 app.locals.pretty = true;
 
-app.use('/node_modules', express.static('../node_modules/'));
-app.use(express.static('../client/'));
+app.use(express.static(path.resolve(__dirname + '/../node_modules/')));
+app.use(express.static(path.resolve(__dirname + '/../client')));
 
+app.get('/templates/:templateName', (req, res) => {
+    res.render(`${req.param('templateName')}`);
+});
 app.get('*', (req, res) => {
-    // res.sendFile(path.resolve(__dirname + '/../client/index.pug'));
-    res.render('index', {
-        name: 'Tryfon'
-    });
+    res.render('index');
 });
 
 app.listen(3000, (err) => {
