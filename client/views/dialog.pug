@@ -1,1 +1,47 @@
-h1 Test
+md-dialog(flex-gt-xs='50', flex-xs='grow', aria-label="dialog")
+    md-toolbar.md-toolbar-tools
+        span Export
+        span(flex)
+        md-button.md-icon-button(ng-click='vm.cancel()')
+            md-icon close
+    md-dialog-content.md-dialog-content
+        div.elemSize(layout='row', layout-align='space-between center')
+            span Export Type:
+            md-select.md-no-underline(ng-model='vm.selectedExportTypes', placeholder='Export Type', style='border: 1px solid red')
+                md-option(ng-repeat='expType in vm.exportTypes', ng-value='expType') {{expType}}
+        md-divider
+        div.elemSize(layout='row', layout-align='space-between center')
+            span Types:
+            md-select.md-no-underline(ng-model='vm.selectedTypes', placeholder='Type', multiple='', style='border: 1px solid red')
+                md-option(ng-repeat='type in vm.types', ng-value='type') {{type}}
+        md-divider
+        div.elemSize(layout='row', layout-align='space-between center')
+            span Sensors:
+            md-radio-group(ng-model='vm.radio', layout='row', layout-align='space-between center', style='border: 1px solid red')
+                md-radio-button.md-primary(ng-value="'All'") All
+                md-radio-button.md-primary(ng-value="'Select'") Select
+        md-divider
+        div.elemSize(ng-if='vm.radio == "Select"', layout='row', layout-align='space-between center')
+            p Select sensors..
+            md-divider
+
+        md-dialog-actions(layout='row', layout-align = 'center center', style='margin-top:40px')
+            //div(flex='50')
+            md-button.md-raised.md-primary(ng-click='vm.cancel()') Cancel
+            md-button.md-raised.md-primary(ng-click='vm.export()') Export
+
+
+
+
+        //span {{vm.getSelectedExportTypes()}}
+        //span {{vm.getSelectedTypes()}}
+        //span {{vm.getRadio()}}
+
+        //md-divider
+        //div(layout='row', layout-align='space-between center')
+        //    md-input-container
+        //        label Date
+//                input.md-input(mdc-datetime-picker='', date='true', time='true', type='text', placeholder='From..', ng-model='startDate', id='start')
+        //    md-input-container.md-input-has-placeholder
+        //        label Date
+        //        input.md-input(mdc-datetime-picker='', date='true', time='true', type='text', placeholder='From..', ng-model='endDate', id='end')

@@ -10,7 +10,7 @@ app.use(express.static(path.resolve(__dirname + '/../node_modules/')));
 app.use(express.static(path.resolve(__dirname + '/../client')));
 
 app.get('/templates/:templateName', (req, res) => {
-    res.render(`${req.param('templateName')}`);
+    res.render(req.params.templateName);
 });
 app.get('*', (req, res) => {
     res.render('index');

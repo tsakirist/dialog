@@ -6,19 +6,20 @@ html(lang='eng')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
         link(rel='stylesheet', href='angular-material/angular-material.min.css')
+        link(rel='stylesheet', href='css/dialog.css')
+        //link(rel='stylesheet', href='angular-material-datetimepicker/css/material-datetimepicker.min.css')
         script(src='angular/angular.min.js')
         script(src='angular-material/angular-material.min.js')
         script(src='angular-animate/angular-animate.min.js')
         script(src='angular-aria/angular-aria.min.js')
+        //script(src='moment/min/moment-with-locales.min.js')
+        //script(src='angular-material-datetimepicker/js/angular-material-datetimepicker.min.js')
         script(src='app.js')
+        script(src='components/main/main-controller.js')
+        script(src='components/main/main-component.js')
         script(src='components/dialog/dialog-controller.js')
-        script(src='components/dialog/dialog-component.js')
         title MainApp
 
     body(ng-app= 'mainApp')
-        dialog-comp
-        md-content
-            hr
-            div(layout='row',layout-sm="column", layout-wrap)
-                md-button.md-icon-button(ng-click='openDialog($event)')
-                    md-icon menu
+        main-comp
+
