@@ -2,41 +2,41 @@ md-dialog(flex-gt-xs='50', flex-xs='grow', aria-label="dialog")
     md-toolbar.md-toolbar-tools
         span Export
         span(flex)
-        md-button.md-icon-button(ng-click='vm.cancel()')
+        md-button.md-icon-button(ng-click='vm.dialogCancel()')
             md-icon close
     md-dialog-content.md-dialog-content
-        div.elemSize(layout='row', layout-align='space-between center')
-            span Export Type:
-            md-select.md-no-underline(ng-model='vm.selectedExportTypes', placeholder='Export Type', style='border: 1px solid red')
-                md-option(ng-repeat='expType in vm.exportTypes', ng-value='expType') {{expType}}
-        md-divider
-        div.elemSize(layout='row', layout-align='space-between center')
-            span Types:
-            md-select.md-no-underline(ng-model='vm.selectedTypes', placeholder='Type', multiple='', style='border: 1px solid red')
-                md-option(ng-repeat='type in vm.types', ng-value='type') {{type}}
-        md-divider
-        div.elemSize(layout='row', layout-align='space-between center')
-            span Sensors:
-            md-radio-group(ng-model='vm.radio', layout='row', layout-align='space-between center', style='border: 1px solid red')
-                md-radio-button.md-primary(ng-value="'All'") All
-                md-radio-button.md-primary(ng-value="'Select'") Select
-        md-divider
-        div.elemSize(ng-if='vm.radio == "Select"', layout='row', layout-align='space-between center')
-            p Select sensors..
+        form(name='mainForm', novalidate='')
+            div.elemSize(layout='row', layout-align='space-between center')
+                span Export Type:
+                md-select.md-no-underline(ng-model='vm.selectedExportType', placeholder='Export Type', required)
+                    md-option(ng-repeat='expType in vm.exportTypes', ng-value='expType') {{expType}}
             md-divider
-
-        md-dialog-actions(layout='row', layout-align = 'center center', style='margin-top:40px')
-            //div(flex='50')
-            md-button.md-raised.md-primary(ng-click='vm.cancel()') Cancel
-            md-button.md-raised.md-primary(ng-click='vm.export()') Export
-
-
-
+            div.elemSize(layout='row', layout-align='space-between center')
+                span Types:
+                md-select.md-no-underline(ng-model='vm.selectedTypes', placeholder='Type', multiple='', required)
+                    md-option-empty(ng-click='vm.clearTypes()') Clear
+                    md-option(ng-repeat='type in vm.types', ng-value='type') {{type}}
+            md-divider
+            div.elemSize(layout='row', layout-align='space-between center')
+                span Sensors:
+                md-radio-group( ng-model='vm.radio', layout='row', layout-align='space-between center', , required)
+                    md-radio-button.md-primary(ng-value="'All'") All
+                    md-radio-button.md-primary(ng-value="'Select'") Select
+            md-divider
+            div.checkBoxes(ng-if='vm.radio === "Select"', layout='row')
+                md-content(layout-padding='')
+                    div(layout='row',layout-wrap='', style='overflow: auto;')
+                        div(flex='25', ng-repeat='sensor in vm.sensors')
+                            md-checkbox.md-primary(ng-click='vm.addSensor(sensor)') {{sensor}}
+                md-divider
+            md-dialog-actions(layout='row', layout-align = 'center center', style='margin-top:40px')
+                md-button.md-raised.md-primary(ng-click='vm.dialogCancel()') Cancel
+                md-button.md-raised.md-primary(ng-disabled='mainForm.$invalid', ng-click='vm.exportJson()') Export
 
         //span {{vm.getSelectedExportTypes()}}
         //span {{vm.getSelectedTypes()}}
         //span {{vm.getRadio()}}
-
+// style='border: 1px solid red'
         //md-divider
         //div(layout='row', layout-align='space-between center')
         //    md-input-container

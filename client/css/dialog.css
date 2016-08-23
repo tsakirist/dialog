@@ -1,8 +1,13 @@
 .dialogSize {
     min-width: 500px;
-    min-height: 300px;
+    min-height: 350px;
 }
 
 .elemSize {
-    height: 50px;
+   min-height: 50px;
+}
+
+.checkBoxes {
+    min-height: 50px;
+    max-height: 80px;
 }
