@@ -8,7 +8,6 @@ md-dialog(flex-gt-xs='grow', flex-xs='grow', aria-label="dialog")
         form(name='mainForm', novalidate='')
             div.elemSize(layout='row', layout-align='space-between center', flex='')
                 h4 Export Type:
-                //md-select.md-no-underline(ng-model='vm.selectedExportType', placeholder='Export Type', required)
                 md-select.md-no-underline(ng-model='vm.selectedExportType', placeholder='Export Type', required)
                     md-option(ng-repeat='expType in vm.object.exportTypes', ng-value='expType') {{expType}}
             md-divider
@@ -19,24 +18,24 @@ md-dialog(flex-gt-xs='grow', flex-xs='grow', aria-label="dialog")
                         md-button.md-primary.clearButton(ng-click='vm.clearTypes()') Clear
                     md-option(ng-repeat='type in vm.object.types', ng-value='type') {{type}}
             md-divider
-            div.elemsize(layout='column')
-                div(layout='row')
+            div.elemSize(layout='column')
+                div.pickers(layout='row')
                     div(flex='')
                         h4 Start date:
                         md-datepicker(ng-model='vm.startDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.date.maxDate',
-                        md-placeholder='Enter date', md-open-on-focus='', required)
+                            md-placeholder='Enter date', md-open-on-focus='', required)
+                    div(flex='')
+                        h4 Start time:
+                            mdp-time-picker(ng-model='vm.startTime', required)
+                div.pickers(layout='row')
                     div(flex='')
                         h4 End date:
                         md-datepicker(ng-model='vm.endDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.data.maxDate',
-                        md-placeholder='Enter date', md-open-on-focus='', required)
-                div(layout='row')
-                    div(flex='')
-                        h4 Start time:
-                        md-datepicker(ng-model='myDate', md-placeholder='Enter date')
+                            md-placeholder='Enter date', md-open-on-focus='', required)
                     div(flex='')
                         h4 End time:
-                        md-datepicker(ng-model='myDate', md-placeholder='Enter date', disabled='')
-            md-divider
+                            mdp-time-picker(ng-model='vm.endTime', required)
+
             div.elemSize(layout='row', layout-align='space-between center', flex='')
                 h4 Sensors:
                 md-radio-group( ng-model='vm.radio', layout='row', layout-align='space-between center', , required)
@@ -52,16 +51,3 @@ md-dialog(flex-gt-xs='grow', flex-xs='grow', aria-label="dialog")
             md-dialog-actions(layout='row', layout-align = 'center center', style='margin-top:40px')
                 md-button.md-raised.md-primary(ng-click='vm.dialogCancel()') Cancel
                 md-button.md-raised.md-primary(ng-disabled='mainForm.$invalid', ng-click='vm.exportJson()') Export
-
-        //span {{vm.getSelectedExportTypes()}}
-        //span {{vm.getSelectedTypes()}}
-        //span {{vm.getRadio()}}
-// style='border: 1px solid red'
-        //md-divider
-        //div(layout='row', layout-align='space-between center')
-        //    md-input-container
-        //        label Date
-//                input.md-input(mdc-datetime-picker='', date='true', time='true', type='text', placeholder='From..', ng-model='startDate', id='start')
-        //    md-input-container.md-input-has-placeholder
-        //        label Date
-        //        input.md-input(mdc-datetime-picker='', date='true', time='true', type='text', placeholder='From..', ng-model='endDate', id='end')

@@ -1,1 +1,1 @@
-angular.module('mainApp', ['ngMaterial']);
+angular.module('mainApp', ['ngMaterial', 'mdPickers']);

@@ -16,16 +16,16 @@ class MainController {
         );
         this.testObj = {
             exportTypes : ['CSV', 'TypeArray'],
-            types : ['1', '2', '3', '4', '5'],
-            sensors : ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89', '144'],
+            types : ['1', '2', '3', '4', '5', '8', '13', '21'],
+            sensors : ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89', '144', '151', '166', '381', '500'],
             date: {
                 minDate: minDate,
                 maxDate: maxDate
             }
         };
         //Auto open dialog
-        //const options = this.createDialog(event);
-        //this.$mdDialog.show(options);
+        const options = this.createDialog(event);
+        this.$mdDialog.show(options);
     }
 
     createDialog(event) {

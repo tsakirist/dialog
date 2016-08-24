@@ -6,22 +6,8 @@ class DialogController {
         this.$mdDialog = $mdDialog;
         this.object = object;
         console.log(this.object);
-        // this.exportTypes = ['CSV', 'TypeArray'];
-        // this.types = ['1', '2', '3', '4', '5'];
-        // this.sensors = ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89', '144'];
-        // this.selectedSensors = [];
-        // this.selectedTypes = [];
-        // const currDate = new Date();
-        // this.minDate = new Date(
-        //     currDate.getFullYear(),
-        //     currDate.getMonth()-2,
-        //     currDate.getDate()
-        // );
-        // this.maxDate = new Date(
-        //     currDate.getFullYear(),
-        //     currDate.getMonth()+1,
-        //     currDate.getDate()
-        // );
+        this.selectedSensors = [];
+        //this.selectedTypes = [];
     }
 
     getSelectedExportType() {
@@ -48,6 +34,15 @@ class DialogController {
         return this.endDate;
     }
 
+    getStartTime() {
+        console.log(this.startTime);
+        return this.startTime;
+    }
+
+    getEndTime() {
+        return this.endTime;
+    }
+
     addSensor(sensor) {
         this.selectedSensors.push(sensor);
     }
@@ -67,8 +62,14 @@ class DialogController {
         } else {
             json.sensors = this.getSelectedSensors();
         }
-        json.startDate = this.getStartDate();
-        json.endDate = this.getEndDate();
+        json.date = {
+            startDate: this.getStartDate(),
+            endDate: this.getEndDate()
+        };
+        json.time = {
+            startTime: this.getStartTime(),
+            endTime: this.getEndTime()
+        };
         this.dialogCancel();
         console.log(JSON.stringify(json));
     }

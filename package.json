@@ -24,6 +24,7 @@
     "angular-material-datetimepicker": "^1.4.0",
     "express": "^4.14.0",
     "material-timepicker": "^0.1.2",
+    "mdPickers": "^0.7.2",
     "moment": "^2.14.1",
     "pug": "^2.0.0-beta5"
   }

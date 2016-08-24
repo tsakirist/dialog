@@ -4,7 +4,12 @@
 }
 
 .elemSize {
-   min-height: 50px;
+    min-height: 50px;
+}
+
+.pickers {
+    min-height:50px;
+    max-height:100px;
 }
 
 .checkBoxes {
