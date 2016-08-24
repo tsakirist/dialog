@@ -7,14 +7,14 @@
     min-height: 50px;
 }
 
-.pickers {
+.pickersSize {
     min-height:50px;
     max-height:100px;
 }
 
 .checkBoxes {
     min-height: 50px;
-    max-height: 80px;
+    max-height: 100px;
 }
 
 .clearButton {

@@ -32,7 +32,7 @@ class MainController {
         return ({
             parent: angular.element(document.body),
             templateUrl: 'templates/dialog',
-            targetEvent: event,
+            //targetEvent: event,
             clickOutsideToClose: true,
             escapeToClose: true,
             controller: DialogController,

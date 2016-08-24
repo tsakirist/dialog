@@ -10,6 +10,8 @@ class DialogController {
         //this.selectedTypes = [];
     }
 
+    //TODO fix selectedSensors duplicates and  also don't allow button if no selectedSensor and radiobutton Select is checked
+
     getSelectedExportType() {
         return this.selectedExportType;
     }
