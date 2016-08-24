@@ -1,4 +1,4 @@
-md-dialog(flex-gt-xs='50', flex-xs='grow', aria-label="dialog")
+md-dialog(flex-gt-xs='grow', flex-xs='grow', aria-label="dialog")
     md-toolbar.md-toolbar-tools
         span Export
         span(flex)
@@ -6,28 +6,48 @@ md-dialog(flex-gt-xs='50', flex-xs='grow', aria-label="dialog")
             md-icon close
     md-dialog-content.md-dialog-content
         form(name='mainForm', novalidate='')
-            div.elemSize(layout='row', layout-align='space-between center')
-                span Export Type:
+            div.elemSize(layout='row', layout-align='space-between center', flex='')
+                h4 Export Type:
+                //md-select.md-no-underline(ng-model='vm.selectedExportType', placeholder='Export Type', required)
                 md-select.md-no-underline(ng-model='vm.selectedExportType', placeholder='Export Type', required)
-                    md-option(ng-repeat='expType in vm.exportTypes', ng-value='expType') {{expType}}
+                    md-option(ng-repeat='expType in vm.object.exportTypes', ng-value='expType') {{expType}}
             md-divider
-            div.elemSize(layout='row', layout-align='space-between center')
-                span Types:
+            div.elemSize(layout='row', layout-align='space-between center', flex='')
+                h4 Types:
                 md-select.md-no-underline(ng-model='vm.selectedTypes', placeholder='Type', multiple='', required)
-                    md-option-empty(ng-click='vm.clearTypes()') Clear
-                    md-option(ng-repeat='type in vm.types', ng-value='type') {{type}}
+                    md-option-empty
+                        md-button.md-primary.clearButton(ng-click='vm.clearTypes()') Clear
+                    md-option(ng-repeat='type in vm.object.types', ng-value='type') {{type}}
             md-divider
-            div.elemSize(layout='row', layout-align='space-between center')
-                span Sensors:
+            div.elemsize(layout='column')
+                div(layout='row')
+                    div(flex='')
+                        h4 Start date:
+                        md-datepicker(ng-model='vm.startDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.date.maxDate',
+                        md-placeholder='Enter date', md-open-on-focus='', required)
+                    div(flex='')
+                        h4 End date:
+                        md-datepicker(ng-model='vm.endDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.data.maxDate',
+                        md-placeholder='Enter date', md-open-on-focus='', required)
+                div(layout='row')
+                    div(flex='')
+                        h4 Start time:
+                        md-datepicker(ng-model='myDate', md-placeholder='Enter date')
+                    div(flex='')
+                        h4 End time:
+                        md-datepicker(ng-model='myDate', md-placeholder='Enter date', disabled='')
+            md-divider
+            div.elemSize(layout='row', layout-align='space-between center', flex='')
+                h4 Sensors:
                 md-radio-group( ng-model='vm.radio', layout='row', layout-align='space-between center', , required)
                     md-radio-button.md-primary(ng-value="'All'") All
                     md-radio-button.md-primary(ng-value="'Select'") Select
             md-divider
-            div.checkBoxes(ng-if='vm.radio === "Select"', layout='row')
-                md-content(layout-padding='')
-                    div(layout='row',layout-wrap='', style='overflow: auto;')
-                        div(flex='25', ng-repeat='sensor in vm.sensors')
-                            md-checkbox.md-primary(ng-click='vm.addSensor(sensor)') {{sensor}}
+            div.checkBoxes(ng-if='vm.radio === "Select"', layout='row', flex='')
+                md-content(flex='')
+                    md-grid-list(md-cols-lg='5', md-cols-md='4',md-cols-sm='3', md-cols-xs='2', md-row-height='4:1')
+                        md-grid-tile(ng-repeat='sensor in vm.object.sensors')
+                            md-checkbox.md-primary(style='width:25px;', ng-click='vm.addSensor(sensor)') {{sensor}}
                 md-divider
             md-dialog-actions(layout='row', layout-align = 'center center', style='margin-top:40px')
                 md-button.md-raised.md-primary(ng-click='vm.dialogCancel()') Cancel

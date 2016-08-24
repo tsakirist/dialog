@@ -11,3 +11,8 @@
     min-height: 50px;
     max-height: 80px;
 }
+
+.clearButton {
+    margin: 0;
+    width: 100%;
+}
