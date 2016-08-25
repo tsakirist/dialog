@@ -1,13 +1,14 @@
 class DialogController {
 
-    // Object includes the available options injected from the mainController
+    // Object includes the available options injected from mainController
     constructor($scope, $mdDialog, object) {
         this.$scope = $scope;
         this.$mdDialog = $mdDialog;
-        this.object = object;
-        console.log(this.object);
         this.selectedSensors = [];
-        this.selectedTypes = [];
+        this.selectedReadingTypes = [];
+        this.object = object;
+        this.startDate = object.date.startDate === undefined ? new Date() : object.date.startDate;
+        this.endDate = object.date.endDate === undefined ? new Date() : object.date.endDate;
     }
 
     getSelectedExportType() {
@@ -15,7 +16,7 @@ class DialogController {
     }
 
     getSelectedTypes() {
-        return this.selectedTypes;
+        return this.selectedReadingTypes;
     }
 
     getRadio() {
@@ -50,23 +51,22 @@ class DialogController {
         else {
             this.selectedSensors.push(sensor);
         }
-        console.log(this.selectedSensors.sort(function(a, b) {
-            return a-b;
-        }));
     }
 
-    clearTypes() {
-        this.selectedTypes = undefined;
+    clearReadingTypes() {
+        this.selectedReadingTypes = undefined;
     }
 
     exportJson() {
+        this.selectedSensors.sort((a, b) => {
+            return a-b;
+        });
         const json = {
-            export: this.getSelectedExportType(),
-            types : this.getSelectedTypes(),
-            radio : this.getRadio()
+            exportTypes : this.getSelectedExportType(),
+            readingTypes : this.getSelectedTypes()
         };
-        if(this.radio === 'All') {
-            json.sensors = this.sensors;
+        if(this.getRadio() === 'All') {
+            json.sensors = this.object.sensors;
         } else {
             json.sensors = this.getSelectedSensors();
         }

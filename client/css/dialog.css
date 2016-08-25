@@ -1,23 +1,9 @@
-.dialogSize {
-    min-width: 500px;
-    min-height: 350px;
-}
-
-.elemSize {
-    min-height: 50px;
-}
-
-.inputPicker {
-    height: 40px;
-    border: 1px solid red;
-    width: 200px;
-}
 .pickersSize {
     min-height:50px;
     max-height:150px;
 }
 
-.checkBoxes {
+.checkBoxesContent {
     min-height: 50px;
     max-height: 100px;
 }
@@ -27,12 +13,19 @@
     width: 100%;
 }
 
-.addLeftMargin {
-    margin-left: 0px;
+/* Used to align time-picker with date-picker */
+.alignPicker {
+    margin-left: 0;
+    padding-top: 18px;
 }
 
+/* When screen width < 600px */
 @media only screen and (max-width: 600px) {
-    .addLeftMargin {
-        margin-left: 5px;
+
+    .alignPicker {
+        margin-left: 17%;
+    }
+    .alignDate {
+        margin-left: 15%;
     }
 }

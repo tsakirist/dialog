@@ -3,36 +3,40 @@ class MainController {
     constructor($scope, $mdDialog) {
         this.$scope = $scope;
         this.$mdDialog = $mdDialog;
+        /**
+         *  Change below code with the object received from server
+         *  json object must have fields: 1) exportTypes , 2) types , 3) sensors , 4) date {minDate, maxDate}
+         */
         const currDate = new Date();
-        const minDate = new Date(
+        const startDate = new Date(
             currDate.getFullYear(),
             currDate.getMonth()-2,
             currDate.getDate()
         );
-        const maxDate = new Date(
+        const endDate = new Date(
             currDate.getFullYear(),
             currDate.getMonth()+1,
             currDate.getDate()
         );
         this.testObj = {
             exportTypes : ['CSV', 'TypeArray'],
-            types : ['1', '2', '3', '4', '5', '8', '13', '21'],
+            readingTypes : ['ph3', 'temp', 'hum', 'gas', 'w/e'],
             sensors : ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89', '144', '151', '166', '381', '500'],
             date: {
-                minDate: minDate,
-                maxDate: maxDate
+                startDate : startDate,
+                endDate : endDate
             }
         };
+        /*** ******************** ***/
         //Auto open dialog
         const options = this.createDialog(event);
         this.$mdDialog.show(options);
     }
 
-    createDialog(event) {
+    createDialog() {
         return ({
             parent: angular.element(document.body),
             templateUrl: 'templates/dialog',
-            //targetEvent: event,
             clickOutsideToClose: true,
             escapeToClose: true,
             controller: DialogController,
@@ -43,8 +47,8 @@ class MainController {
         });
     }
 
-    openDialog(event) {
-        const options = this.createDialog(event);
+    openDialog() {
+        const options = this.createDialog();
         this.$mdDialog.show(options);
     }
 }
