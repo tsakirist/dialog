@@ -7,9 +7,14 @@
     min-height: 50px;
 }
 
+.inputPicker {
+    height: 40px;
+    border: 1px solid red;
+    width: 200px;
+}
 .pickersSize {
     min-height:50px;
-    max-height:100px;
+    max-height:150px;
 }
 
 .checkBoxes {
@@ -20,4 +25,14 @@
 .clearButton {
     margin: 0;
     width: 100%;
+}
+
+.addLeftMargin {
+    margin-left: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .addLeftMargin {
+        margin-left: 5px;
+    }
 }

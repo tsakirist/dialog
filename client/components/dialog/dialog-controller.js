@@ -7,10 +7,8 @@ class DialogController {
         this.object = object;
         console.log(this.object);
         this.selectedSensors = [];
-        //this.selectedTypes = [];
+        this.selectedTypes = [];
     }
-
-    //TODO fix selectedSensors duplicates and  also don't allow button if no selectedSensor and radiobutton Select is checked
 
     getSelectedExportType() {
         return this.selectedExportType;
@@ -37,16 +35,24 @@ class DialogController {
     }
 
     getStartTime() {
-        console.log(this.startTime);
-        return this.startTime;
+        return this.startTime.toTimeString();
     }
 
     getEndTime() {
-        return this.endTime;
+        return this.endTime.toTimeString();
     }
 
     addSensor(sensor) {
-        this.selectedSensors.push(sensor);
+        const index = this.selectedSensors.indexOf(sensor);
+        if(index > -1) {
+            this.selectedSensors.splice(index, 1);
+        }
+        else {
+            this.selectedSensors.push(sensor);
+        }
+        console.log(this.selectedSensors.sort(function(a, b) {
+            return a-b;
+        }));
     }
 
     clearTypes() {

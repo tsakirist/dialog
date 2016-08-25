@@ -1,4 +1,4 @@
-md-dialog(flex-gt-xs='grow', flex-xs='grow', aria-label="dialog")
+md-dialog(flex-gt-sm='grow', flex-sm='grow', flex-xs='grow', aria-label="dialog")
     md-toolbar.md-toolbar-tools
         span Export
         span(flex)
@@ -18,36 +18,98 @@ md-dialog(flex-gt-xs='grow', flex-xs='grow', aria-label="dialog")
                         md-button.md-primary.clearButton(ng-click='vm.clearTypes()') Clear
                     md-option(ng-repeat='type in vm.object.types', ng-value='type') {{type}}
             md-divider
-            div.elemSize(layout='column')
-                div.pickersSize(layout='row')
-                    div(flex='')
-                        h4 Start date:
-                        md-datepicker(ng-model='vm.startDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.date.maxDate',
-                            md-placeholder='Enter date', md-open-on-focus='', required)
-                    div(flex='')
-                        h4 Start time:
-                            mdp-time-picker(ng-model='vm.startTime', required)
-                div.pickersSize(layout='row')
-                    div(flex='')
-                        h4 End date:
-                        md-datepicker(ng-model='vm.endDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.data.maxDate',
-                            md-placeholder='Enter date', md-open-on-focus='', required)
-                    div(flex='')
-                        h4 End time:
+            // <<<<<GRID LIST>>>>>>
+            //md-content(flex='', layout-align='start center')
+            //    md-grid-list(md-cols-gt-xs='3', md-cols-xs='2', md-row-height-xs='6:1', md-row-height-gt-xs='6:1')
+            //        md-grid-tile
+            //            h4 Start:
+            //            span(flex='')
+            //        md-grid-tile
+            //            md-datepicker(ng-model='vm.startDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.date.maxDate',
+            //                    md-placeholder='Enter date', md-open-on-focus='', required)
+            //        md-grid-tile
+            //            //h4 Start time:
+            //            span(flex-xs='30')
+            //            mdp-time-picker(layout='row',style='padding-top:15px',ng-model='vm.startTime', required)
+            //        md-grid-tile
+            //            h4 End:
+            //            span(flex='')
+            //            md-datepicker(ng-model='vm.endDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.data.maxDate',
+            //                     md-placeholder='Enter date', md-open-on-focus='', required)
+            //        md-grid-tile
+            //            //h4 End time:
+            //            mdp-time-picker(style='padding-top:15px', ng-model='vm.endTime', required)
+            //md-divider
+            //div.elemSize(layout='column')
+            //    div.pickersSize(layout='row')
+            //        div(flex='')
+            //            //h4 Start date:
+            //            h4 Start:
+            //            md-datepicker(ng-model='vm.startDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.date.maxDate',
+            //                md-placeholder='Enter date', md-open-on-focus='', required)
+            //        div(flex='')
+            //            //h4 Start time:
+            //            mdp-time-picker(ng-model='vm.startTime', required)
+            //    div.pickersSize(layout='row')
+            //        div(flex='')
+            //            h4 End date:
+            //            md-datepicker(ng-model='vm.endDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.data.maxDate',
+            //                md-placeholder='Enter date', md-open-on-focus='', required)
+            //        div(flex='')
+            //            h4 End time:
+            //                mdp-time-picker(ng-model='vm.endTime', required)
+            //div.elemSize(layout='column')
+            md-content.pickersSize(layout-gt-xs='column', style='')
+                    div(layout-gt-xs='row', layout-xs='column', layout-align-gt-xs='space-between center', layout-align-xs='start')
+                        div(flex-gt-sm='25', flex-sm='10')
+                            h4 Start:
+                        div(flex='')
+                            md-datepicker(ng-model='vm.startDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.date.maxDate',
+                                        md-placeholder='Enter date', md-open-on-focus='', required)
+                        div.addLeftMargin(flex='', style='padding-top:18px')
                             mdp-time-picker(ng-model='vm.endTime', required)
+                    div(layout-gt-xs='row', layout-xs='column', layout-align-gt-xs='space-between center', layout-align-xs='start')
+                        div(flex-gt-sm='25', flex-sm='10')
+                            h4 End:
+                        div(flex='')
+                            md-datepicker(ng-model='vm.endDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.data.maxDate',
+                                md-placeholder='Enter date', md-open-on-focus='', required)
+                        div.addLeftMargin(flex='',style='padding-top:18px')
+                            mdp-time-picker(ng-model='vm.endTime', required)
+            md-divider
+            // <<<<OLD>>>>>
+            //div.elemSize(layout='column')
+            //    div.pickersSize(layout='row')
+            //        div(flex='')
+            //            h4 Start date:
+            //            md-datepicker(ng-model='vm.startDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.date.maxDate',
+            //                md-placeholder='Enter date', md-open-on-focus='', required)
+            //        div(flex='')
+            //            h4 Start time:
+            //                mdp-time-picker(ng-model='vm.startTime', required)
+            //    div.pickersSize(layout='row')
+            //        div(flex='')
+            //            h4 End date:
+            //            md-datepicker(ng-model='vm.endDate', md-min-date='vm.object.date.minDate', md-max-date='vm.object.data.maxDate',
+            //                md-placeholder='Enter date', md-open-on-focus='', required)
+            //        div(flex='')
+            //            h4 End time:
+            //                mdp-time-picker(ng-model='vm.endTime', required)
 
             div.elemSize(layout='row', layout-align='space-between center', flex='')
                 h4 Sensors:
-                md-radio-group( ng-model='vm.radio', layout='row', layout-align='space-between center', , required)
+                md-radio-group(ng-model='vm.radio', layout='row', layout-align='space-between center', , required)
                     md-radio-button.md-primary(ng-value="'All'") All
                     md-radio-button.md-primary(ng-value="'Select'") Select
             md-divider
             div.checkBoxes(ng-if='vm.radio === "Select"', layout='row', flex='')
                 md-content(flex='')
-                    md-grid-list(md-cols-lg='5', md-cols-md='4',md-cols-sm='3', md-cols-xs='2', md-row-height='4:1')
+                    //md-grid-list(md-gutter='1px', md-row-height-xs="40px", md-cols-lg='5', md-cols-md='4',md-cols-sm='3', md-cols-xs='2', md-row-height-gt-xs='4:1')
+                    md-grid-list(md-cols-lg='5', md-cols-md='4',md-cols-sm='3', md-cols-xs='2', md-row-height='50px')
                         md-grid-tile(ng-repeat='sensor in vm.object.sensors')
                             md-checkbox.md-primary(style='width:25px;', ng-click='vm.addSensor(sensor)') {{sensor}}
-                md-divider
+                //md-divider
             md-dialog-actions(layout='row', layout-align = 'center center', style='margin-top:40px')
                 md-button.md-raised.md-primary(ng-click='vm.dialogCancel()') Cancel
-                md-button.md-raised.md-primary(ng-disabled='mainForm.$invalid', ng-click='vm.exportJson()') Export
+                md-button.md-raised.md-primary(ng-disabled='mainForm.$invalid || (vm.selectedSensors.length === 0 && vm.radio !== "All")', ng-click='vm.exportJson()') Export
+                //md-button.md-raised.md-primary(ng-click='vm.exportJson()') Export
