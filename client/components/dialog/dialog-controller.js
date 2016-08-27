@@ -15,7 +15,7 @@ class DialogController {
         return this.selectedExportType;
     }
 
-    getSelectedTypes() {
+    getSelectedReadingTypes() {
         return this.selectedReadingTypes;
     }
 
@@ -63,7 +63,7 @@ class DialogController {
         });
         const json = {
             exportTypes : this.getSelectedExportType(),
-            readingTypes : this.getSelectedTypes()
+            readingTypes : this.getSelectedReadingTypes()
         };
         if(this.getRadio() === 'All') {
             json.sensors = this.object.sensors;

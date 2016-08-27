@@ -5,7 +5,7 @@ class MainController {
         this.$mdDialog = $mdDialog;
         /**
          *  Change below code with the object received from server
-         *  json object must have fields: 1) exportTypes , 2) types , 3) sensors , 4) date {minDate, maxDate}
+         *  json object must have fields: 1) exportTypes , 2) readingTypes , 3) sensors , 4) date {minDate, maxDate}
          */
         const currDate = new Date();
         const startDate = new Date(
